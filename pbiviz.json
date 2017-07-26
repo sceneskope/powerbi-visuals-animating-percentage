@@ -7,12 +7,12 @@
     "version": "1.0.1",
     "description": "Animating percentage visual",
     "supportUrl": "",
-    "gitHubUrl": ""
+    "gitHubUrl": "https://github.com/sceneskope/powerbi-visuals-animating-percentage.git"
   },
   "apiVersion": "1.7.0",
   "author": {
-    "name": "",
-    "email": ""
+    "name": "Nick Randell",
+    "email": "nick.randell@sceneskope.com"
   },
   "assets": {
     "icon": "assets/icon.png"
