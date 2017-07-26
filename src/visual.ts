@@ -104,6 +104,7 @@ module powerbi.extensibility.visual {
         private readonly mainGraphics: d3.Selection<SVGGElement>;
         private readonly spinnerGraphics: d3.Selection<SVGGElement>;
         private readonly valueFormatter: formatting.IValueFormatter;
+        private viewModel?: Model
 
 
         constructor(options: VisualConstructorOptions) {
@@ -117,9 +118,39 @@ module powerbi.extensibility.visual {
             this.valueFormatter = formatting.valueFormatter.create({});
         }
 
+        private hasViewModelChanged(viewModel: Model) {
+            if (this.viewModel === undefined) {
+                return true;
+            }
+            if (this.viewModel.value !== viewModel.value) {
+                return true;
+            }
+
+            if (this.viewModel.arcs.length !== viewModel.arcs.length) {
+                return true;
+            }
+
+            for (let i = 0; i < viewModel.arcs.length; i++) {
+                const oldArc = this.viewModel.arcs[i].newData;
+                const newArc = viewModel.arcs[i].newData;
+                if ((newArc.adjust !== oldArc.adjust)
+                    || (newArc.angle !== oldArc.angle)
+                    || (newArc.offset !== oldArc.offset)
+                    || (newArc.radius !== oldArc.radius)
+                    || (newArc.width !== oldArc.width))
+                    return true;
+            }
+            return false;
+        }
+
         public update(options: VisualUpdateOptions) {
             try {
                 const viewModel = visualTransform(options, this.host);
+                if ((options.type & VisualUpdateType.Data) && !this.hasViewModelChanged(viewModel)) {
+                    return;
+                }
+                this.viewModel = viewModel;
+
                 this.settings = viewModel.settings;
                 const width = options.viewport.width;
                 const height = options.viewport.height;

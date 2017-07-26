@@ -46,7 +46,7 @@ module powerbi.extensibility.visual {
       export class displaySettings {
         public overlapAmount: number = 0.5;
         public offsetAmount: number = 0.5;
-        public duration: number = 15000;
+        public duration: number = 1000;
         public maxThickness: number = 15;
         public maxRadius: number = 35;
         public minRadius: number = 20;

@@ -4,7 +4,7 @@
     "displayName": "animating percentage",
     "guid": "animatingPercentage2BD6148953DF48E5AE4F148040D5E777",
     "visualClassName": "Visual",
-    "version": "1.0.1",
+    "version": "1.0.2",
     "description": "Animating percentage visual",
     "supportUrl": "",
     "gitHubUrl": "https://github.com/sceneskope/powerbi-visuals-animating-percentage.git"
