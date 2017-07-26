@@ -1,0 +1,107 @@
+{
+    "dataRoles": [
+        {
+            "displayName": "Label",
+            "name": "label",
+            "kind": "Grouping"
+        },
+        {
+            "displayName": "Percentage",
+            "name": "percentage",
+            "kind": "Measure"
+        }
+    ],
+    "objects": {
+        "percentages": {
+            "displayName": "Percentages",
+            "properties": {
+                "color": {
+                    "displayName": "Color",
+                    "type": {
+                        "fill": {
+                            "solid": {
+                                "color": true
+                            }
+                        }
+                    }
+                },
+                "fontSize": {
+                    "displayName": "Font size",
+                    "type": {
+                        "formatting": {
+                            "fontSize": true
+                        }
+                    }
+                }
+            }
+        },
+        "display": {
+            "displayName": "Display",
+            "properties": {
+                "overlapAmount": {
+                    "displayName": "Overlap amount",
+                    "type": {
+                        "numeric": true
+                    }
+                },
+                "offsetAmount": {
+                    "displayName": "Offset amount",
+                    "type": {
+                        "numeric": true
+                    }
+                },
+                "duration": {
+                    "displayName": "Duration (ms)",
+                    "type": {
+                        "numeric": true
+                    }
+                },
+                "maxThickness": {
+                    "displayName": "Maximum thickness",
+                    "type": {
+                        "numeric": true
+                    }
+                },
+                "maxRadius": {
+                    "displayName": "Maximum radius",
+                    "type": {
+                        "numeric": true
+                    }
+                },
+                "minRadius": {
+                    "displayName": "Minimum radius",
+                    "type": {
+                        "numeric": true
+                    }
+                },
+                "thicknessOverlap": {
+                    "displayName": "Thickness overlap",
+                    "type": {
+                        "numeric": true
+                    }
+                }
+            }
+        }
+    },
+    "dataViewMappings": [
+        {
+            "conditions": [
+                { "label": { "max": 1 }},
+                { "percentage": { "min": 1, "max": 1 }}
+            ],
+            "table": {
+                "rows": {
+                    "select": [
+                        { "for": { "in": "label"}},
+                        { "bind": { "to": "percentage" } }
+                    ]
+                }
+            }
+        }
+    ],
+    "sorting": {
+        "default": {
+            
+        }
+    }
+}
